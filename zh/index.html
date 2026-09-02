@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sitecase — 在本地打开 HTML 文件</title>
+<meta name="description" content="Sitecase 在 iPhone 和 iPad 上本地打开 HTML 文件，支持 JavaScript、CSS、源码查看与文本搜索。无服务器、无账号、无跟踪。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#F4F4F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://sitecase.io/zh/"><link rel="alternate" hreflang="x-default" href="https://sitecase.io/"><link rel="alternate" hreflang="zh-Hans" href="https://sitecase.io/zh/"><link rel="alternate" hreflang="ja" href="https://sitecase.io/ja/"><link rel="alternate" hreflang="it" href="https://sitecase.io/it/"><link rel="alternate" hreflang="es" href="https://sitecase.io/es/"><link rel="alternate" hreflang="fr" href="https://sitecase.io/fr/"><link rel="alternate" hreflang="en" href="https://sitecase.io/en/"><link rel="alternate" hreflang="de" href="https://sitecase.io/">
+<meta property="og:url" content="https://sitecase.io/zh/"><meta property="og:type" content="website">
+<meta property="og:site_name" content="Sitecase">
+<meta property="og:title" content="Sitecase — 在本地打开 HTML 文件">
+<meta property="og:description" content="Sitecase 在 iPhone 和 iPad 上本地打开 HTML 文件，支持 JavaScript、CSS、源码查看与文本搜索。无服务器、无账号、无跟踪。">
+<meta property="og:image" content="https://sitecase.io/assets/og-image-zh.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sitecase — 在本地打开 HTML 文件">
+<meta name="twitter:description" content="Sitecase 在 iPhone 和 iPad 上本地打开 HTML 文件，支持 JavaScript、CSS、源码查看与文本搜索。无服务器、无账号、无跟踪。">
+<meta name="twitter:image" content="https://sitecase.io/assets/og-image-zh.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+JP:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%23F4F4F2'/%3E%3Cpath d='M432 304a80 80 0 0 1 160 0v48h-40v-48a40 40 0 0 0-80 0v48h-40z' fill='%23111'/%3E%3Crect x='208' y='360' width='608' height='408' rx='40' fill='%23111'/%3E%3Cg transform='translate(512 560)' fill='none' stroke='%23F4F4F2' stroke-width='28' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='-96,-64 -156,0 -96,64'/%3E%3Cline x1='-40' y1='72' x2='40' y2='-72'/%3E%3Cpolyline points='96,-64 156,0 96,64'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{--blue:#3474DD;--blue-deep:#2358B4;--ink:#0B0D12;--ink-2:#3A414F;--ink-3:#6B7280;--bg:#FFFFFF;--bg-2:#F4F6F9;--bg-3:#EEF0F3;--line:rgba(11,13,18,.09);--radius:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+html[lang="ja"] body{font-family:'Instrument Sans','Noto Sans JP',-apple-system,sans-serif}
+html[lang="zh-Hans"] body{font-family:'Instrument Sans','Noto Sans SC',-apple-system,sans-serif}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:var(--blue-deep)}
+img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:26px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--ink)}
+.logo .mark{width:30px;height:30px;border-radius:9px;overflow:hidden;flex:0 0 auto}
+.logo .mark svg{width:100%;height:100%;display:block}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:15px}
+.nav-links a{color:var(--ink-2);font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;transition:transform .15s ease,background .15s ease}
+.btn:hover{background:#000;color:#fff;transform:translateY(-1px)}
+.btn.blue{background:var(--blue)}
+.btn.blue:hover{background:var(--blue-deep)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--bg-2);color:var(--ink)}
+
+.lang{position:relative}
+.lang-btn{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit;font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer}
+.lang-btn:hover{background:var(--bg-2);color:var(--ink)}
+.lang-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:172px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -12px rgba(11,13,18,.22);padding:6px;display:none;flex-direction:column;gap:2px;z-index:60}
+.lang-menu.open{display:flex}
+.lang-menu button,.lang-menu a{display:block;background:transparent;border:none;text-align:left;font:inherit;font-size:14.5px;color:var(--ink-2);padding:9px 11px;border-radius:9px;cursor:pointer;text-decoration:none}
+.lang-menu button:hover,.lang-menu a:hover{background:var(--bg-2);color:var(--ink)}
+.lang-menu button[aria-current="true"],.lang-menu a[aria-current="true"]{color:var(--blue);font-weight:600}
+@media(max-width:900px){.nav-links{display:none}}
+
+.hero{padding:96px 0 0;background:linear-gradient(180deg,#fff 0%,var(--bg-3) 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-size:clamp(38px,5.2vw,62px);line-height:1.04;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
+.lede{font-size:19px;color:var(--ink-2);margin-top:20px;max-width:44ch;text-wrap:pretty}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;align-items:center}
+.hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px}
+.hero-meta span{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--ink-3)}
+.hero-meta svg{width:15px;height:15px;stroke:var(--blue);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.hero-shot{display:flex;justify-content:center;align-items:flex-end}
+.phone{width:290px;background:#0F1115;border-radius:44px;padding:8px;box-shadow:0 40px 70px -30px rgba(11,13,18,.4)}
+.phone img{border-radius:37px;width:100%}
+.badge{display:inline-block;transition:opacity .15s ease}
+.badge:hover{opacity:.82}
+.badge img{height:54px;width:auto;display:block}
+@media(max-width:900px){.hero{padding-top:64px}.hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}.lede{margin-left:auto;margin-right:auto}.hero-cta,.hero-meta{justify-content:center}}
+
+section{padding:104px 0}
+.sec-head{max-width:660px}
+.sec-head h2{font-size:clamp(28px,3.4vw,42px);line-height:1.1;letter-spacing:-.03em;font-weight:600;margin-top:14px;text-wrap:balance}
+.sec-head p{color:var(--ink-2);font-size:18px;margin-top:16px;text-wrap:pretty}
+
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.feat{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.feat .ic{width:40px;height:40px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;margin-bottom:18px}
+.feat .ic svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:17px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pro{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(52,116,221,.32);background:rgba(52,116,221,.07);border-radius:5px;padding:2px 6px;font-weight:500}
+.feat p{font-size:15px;color:var(--ink-2);margin-top:8px;text-wrap:pretty}
+@media(max-width:900px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+
+.gallery{background:var(--bg-3);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rail{display:flex;gap:24px;margin-top:48px;overflow-x:auto;padding:4px max(24px,calc((100vw - 1140px)/2 + 24px)) 28px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-thumb{background:rgba(11,13,18,.16);border-radius:99px}
+.rail-outer{width:100%}
+.shot{flex:0 0 auto;width:232px;scroll-snap-align:center}
+.shot .phone{width:232px;border-radius:36px;padding:7px}
+.shot .phone img{border-radius:30px}
+.shot figcaption{margin-top:14px;font-size:14px;color:var(--ink-2);text-align:center}
+
+.privacy{background:var(--ink);color:#fff}
+.privacy .sec-head h2{color:#fff}
+.privacy .sec-head p{color:rgba(255,255,255,.66)}
+.privacy .mono{color:rgba(255,255,255,.44)}
+.priv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.priv{border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:28px;background:rgba(255,255,255,.03)}
+.priv h3{font-size:17px;font-weight:600;display:flex;align-items:center;gap:10px}
+.priv h3 svg{width:18px;height:18px;stroke:#7FA8ED;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.priv p{font-size:15px;color:rgba(255,255,255,.62);margin-top:10px;text-wrap:pretty}
+@media(max-width:900px){.priv-grid{grid-template-columns:1fr}}
+
+.faq{max-width:760px;margin-top:44px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{font-size:17px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';color:var(--ink-3);font-weight:400;font-size:22px;line-height:1}
+details[open] summary::after{content:'–'}
+details p{color:var(--ink-2);font-size:16px;margin-top:12px;text-wrap:pretty}
+
+.cta{background:linear-gradient(180deg,var(--bg-3) 0%,#fff 100%);text-align:center}
+.cta h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.03em;line-height:1.06;font-weight:600;text-wrap:balance}
+.cta p{color:var(--ink-2);font-size:18px;margin:16px auto 0;max-width:46ch}
+.cta .hero-cta{justify-content:center;margin-top:32px}
+.langs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px}
+.langs button,.langs a{font:inherit;font-size:13px;color:var(--ink-3);border:1px solid var(--line);border-radius:99px;padding:6px 13px;background:#fff;cursor:pointer;text-decoration:none}
+.langs button:hover,.langs a:hover{color:var(--ink);border-color:rgba(11,13,18,.2)}
+.langs button[aria-current="true"],.langs a[aria-current="true"]{color:var(--blue);border-color:rgba(52,116,221,.4);background:rgba(52,116,221,.06)}
+
+footer{border-top:1px solid var(--line);padding:44px 0;font-size:14px;color:var(--ink-3)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.tm{max-width:1140px;margin:20px auto 0;padding:0 24px;font-size:12px;line-height:1.5;color:var(--ink-3);text-wrap:pretty}
+.foot-links{display:flex;gap:22px;margin-left:auto;flex-wrap:wrap}
+.foot-links a{color:var(--ink-3)}
+.foot-links a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="mark"><svg viewBox="0 0 1024 1024" shape-rendering="geometricPrecision" aria-hidden="true"><rect width="1024" height="1024" rx="224" ry="224" fill="#F4F4F2"></rect><path d="M 432 304 a 80 80 0 0 1 160 0 v 48 h -40 v -48 a 40 40 0 0 0 -80 0 v 48 h -40 z" fill="#111111"></path><rect x="208" y="360" width="608" height="408" rx="40" ry="40" fill="#111111"></rect><rect x="208" y="544" width="608" height="8" fill="#F4F4F2" fill-opacity="0.18"></rect><rect x="472" y="520" width="80" height="40" rx="8" ry="8" fill="#F4F4F2" fill-opacity="0.14"></rect><g transform="translate(512 560)" fill="none" stroke="#F4F4F2" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><polyline points="-96,-64 -156,0 -96,64"></polyline><line x1="-40" y1="72" x2="40" y2="-72"></line><polyline points="96,-64 156,0 96,64"></polyline></g></svg></span>Sitecase</a>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#screens">截图</a>
+      <a href="#privacy">隐私</a>
+      <a href="#faq">常见问题</a>
+    </div>
+    <div class="lang">
+      <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"></path></svg><span id="lang-current">简体中文</span></button>
+      <div class="lang-menu" id="lang-menu"><a href="../">Deutsch</a><a href="../en/">English</a><a href="../fr/">Français</a><a href="../es/">Español</a><a href="../it/">Italiano</a><a href="../ja/">日本語</a><a href="../zh/" aria-current="true">简体中文</a></div>
+    </div>
+    <a class="btn blue" href="https://apps.apple.com/app/html-viewer-sitecase/id6762896369" target="_blank" rel="noopener">在 App Store 查看</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="mono">iPhone &amp; iPad</p>
+      <h1>在本地打开 HTML 文件。</h1>
+      <p class="lede">Sitecase 直接在你的设备上打开、渲染并搜索 HTML 文件，支持 JavaScript、CSS 与源码查看。无服务器、无账号、无跟踪。</p>
+      <div class="hero-cta">
+        <a class="badge" href="https://apps.apple.com/app/html-viewer-sitecase/id6762896369" target="_blank" rel="noopener"><img src="../assets/badge-appstore-zh.svg" alt="Download on the App Store"></a>
+        <a class="btn ghost" href="#features">查看功能</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg><span>一切留在设备上</span></span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg><span>离线可用</span></span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg><span>免费，Pro 可选</span></span>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <div class="phone"><img src="../assets/iphone/zh/1-demo.png" alt="Sitecase" loading="eager"></div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="mono">功能</p>
+      <h2>随身的完整 HTML 阅读器。</h2>
+      <p>为 Web 开发者、学生、教师以及所有需要随时查看 HTML 的人而做——从单个文件到多页网站。</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+        <h3><span>JavaScript 可运行</span></h3>
+        <p>完整渲染 HTML、CSS 与 JavaScript，计算器、游戏和原型都能原生运行。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M3 11h18"></path></svg></div>
+        <h3><span>整个网站文件夹</span> <span class="pro">Pro</span></h3>
+        <p>打开包含图片、CSS 与 JavaScript 的多页网站，而不只是单个文件。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="10.5" r="2.5"></circle><circle cx="8.5" cy="7.5" r="2.5"></circle><circle cx="6.5" cy="12.5" r="2.5"></circle><path d="M12 2a10 10 0 0 0 0 20 2 2 0 0 0 1.2-3.6 2 2 0 0 1 1.4-3.4H17a5 5 0 0 0 5-5c0-4.4-4.5-8-10-8z"></path></svg></div>
+        <h3><span>现代 CSS</span></h3>
+        <p>Grid、Flexbox、动画与网络字体都能精准呈现。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg></div>
+        <h3><span>源码查看</span> <span class="pro">Pro</span></h3>
+        <p>带语法高亮阅读任意文件，无需离开阅读器。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+        <h3><span>文本搜索</span> <span class="pro">Pro</span></h3>
+        <p>在已打开的文件内全文搜索，并高亮匹配结果。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></div>
+        <h3><span>深色模式</span></h3>
+        <p>跟随系统或固定使用，适应任何环境。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16" y2="16"></line><line x1="8" y1="11" x2="14" y2="11"></line><line x1="11" y1="8" x2="11" y2="14"></line></svg></div>
+        <h3><span>自由缩放</span></h3>
+        <p><span>每个页面都支持双指缩放，还可设置默认缩放级别</span> <span class="pro">Pro</span></p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"></path></svg></div>
+        <h3><span>收藏</span> <span class="pro">Pro</span></h3>
+        <p>把常用文件和文件夹固定下来，一次点按即可重新打开。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"></path><path d="M12 3v12"></path><path d="m8 7 4-4 4 4"></path></svg></div>
+        <h3><span>几秒完成导入</span></h3>
+        <p>通过“文件”应用、AirDrop、iCloud 云盘或其他应用的共享菜单。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"></path></svg></div>
+        <h3><span>控制网络访问</span> <span class="pro">Pro</span></h3>
+        <p>按页面允许或阻止 JavaScript 与网络访问。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+        <h3><span>无服务器</span></h3>
+        <p>不上传、不注册、不分析。你的文件始终属于你。</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 18a4 4 0 0 1 .5-8 6 6 0 0 1 11.4-1A4.5 4.5 0 0 1 19 18z"></path><path d="M3 21 21 3"></path></svg></div>
+        <h3><span>完全离线</span></h3>
+        <p>无网络也能使用——在飞机上、火车上或没有信号时。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="screens">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="mono">截图</p>
+      <h2>别人都用它做什么。</h2>
+      <p>文档、单词卡、行程、原型、小游戏——都只是简单的 HTML 文件。</p>
+    </div>
+  </div>
+  <div class="rail-outer">
+    <div class="rail">
+      <figure class="shot"><div class="phone"><img src="../assets/iphone/zh/2-liste.png" alt="Sitecase: 所有文件一目了然" loading="lazy"></div><figcaption>所有文件一目了然</figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="../assets/iphone/zh/3-website.png" alt="Sitecase: 完整网站" loading="lazy"></div><figcaption>完整网站</figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="../assets/iphone/zh/4-dev.png" alt="Sitecase: 开发者工具" loading="lazy"></div><figcaption>开发者工具</figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="../assets/iphone/zh/5-vokabeln.png" alt="Sitecase: 互动学习应用" loading="lazy"></div><figcaption>互动学习应用</figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="../assets/iphone/zh/6-reise.png" alt="Sitecase: 离线行程" loading="lazy"></div><figcaption>离线行程</figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="../assets/iphone/zh/7-game.png" alt="Sitecase: JavaScript 游戏" loading="lazy"></div><figcaption>JavaScript 游戏</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="privacy" id="privacy">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="mono">隐私</p>
+      <h2>你的文件。你的设备。</h2>
+      <p>显示 HTML 并不需要云端，所以我们没有云端。</p>
+    </div>
+    <div class="priv-grid">
+      <div class="priv">
+        <h3><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M8 7V5a4 4 0 0 1 8 0v2"></path></svg><span>没有服务器</span></h3>
+        <p>所有文件都在本地打开和渲染。不存在可以接收数据的后端。</p>
+      </div>
+      <div class="priv">
+        <h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M5.6 5.6l12.8 12.8"></path></svg><span>没有跟踪</span></h3>
+        <p>没有分析工具、广告标识或我们的 Cookie。我们不知道你打开了哪些文件。</p>
+      </div>
+      <div class="priv">
+        <h3><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg><span>全部在设备上</span></h3>
+        <p>文件留在你放置的位置，受 iOS 沙盒与加密保护。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="mono">常见问题</p>
+      <h2>常见问题</h2>
+    </div>
+    <div class="faq">
+      <details open=""><summary><span>可以打开哪些文件？</span></summary><p>HTML 文件及其配套的 CSS、JavaScript、图片与字体。也可以打开包含多个页面的整个文件夹，并在页面之间跳转。</p></details>
+      <details><summary><span>需要联网吗？</span></summary><p>不需要。Sitecase 完全离线渲染。只有当页面本身加载外部内容时才需要网络。</p></details>
+      <details><summary><span>如何把文件导入应用？</span></summary><p>通过“文件”应用、AirDrop、iCloud 云盘或其他应用的共享菜单。</p></details>
+      <details><summary><span>JavaScript 真的能运行吗？</span></summary><p>可以。从简单的计数器到完整的游戏与原型，脚本都在阅读器中执行。</p></details>
+      <details><summary><span>Sitecase Pro 包含什么？</span></summary><p>Sitecase 免费使用。可选的应用内购买增加了打开整个网站文件夹、带高亮的源码查看、文本搜索、收藏、固定缩放级别，以及对 JavaScript 与网络访问的控制。</p></details>
+      <details><summary><span>我的数据会被上传吗？</span></summary><p>不会。没有服务器、没有账号、没有分析。一切都留在设备上。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="download">
+  <div class="wrap">
+    <h2>立即下载，打开第一个文件。</h2>
+    <p>Sitecase 免费使用。Pro 功能可通过可选的应用内购买解锁，无需账号，也没有订阅。</p>
+    <div class="hero-cta">
+      <a class="badge" href="https://apps.apple.com/app/html-viewer-sitecase/id6762896369" target="_blank" rel="noopener"><img src="../assets/badge-appstore-zh.svg" alt="Download on the App Store"></a>
+    </div>
+    <div class="langs" id="lang-chips"><a href="../">Deutsch</a><a href="../en/">English</a><a href="../fr/">Français</a><a href="../es/">Español</a><a href="../it/">Italiano</a><a href="../ja/">日本語</a><a href="../zh/" aria-current="true">简体中文</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sitecase</span>
+    <div class="foot-links">
+      <a href="https://dennisbortmes.github.io/legal/datenschutz" target="_blank" rel="noopener">隐私</a>
+      <a href="#faq">支持</a>
+      <a href="https://dennisbortmes.github.io/legal/impressum" target="_blank" rel="noopener">法律声明</a>
+    </div>
+  </div>
+  <p class="tm">App Store 是 Apple Inc. 的服务商标。Apple 和 Apple 标志是 Apple Inc. 在美国及其他国家和地区注册的商标。</p>
+</footer>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Sitecase","applicationCategory":"UtilitiesApplication","operatingSystem":"iOS, iPadOS","installUrl":"https://apps.apple.com/app/html-viewer-sitecase/id6762896369","sameAs":"https://apps.apple.com/app/html-viewer-sitecase/id6762896369","url":"https://sitecase.io/zh/","description":"Sitecase 在 iPhone 和 iPad 上本地打开 HTML 文件，支持 JavaScript、CSS、源码查看与文本搜索。无服务器、无账号、无跟踪。","inLanguage":"zh-Hans","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},{"@type":"WebSite","name":"Sitecase","url":"https://sitecase.io/zh/","inLanguage":"zh-Hans"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"可以打开哪些文件？","acceptedAnswer":{"@type":"Answer","text":"HTML 文件及其配套的 CSS、JavaScript、图片与字体。也可以打开包含多个页面的整个文件夹，并在页面之间跳转。"}},{"@type":"Question","name":"需要联网吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。Sitecase 完全离线渲染。只有当页面本身加载外部内容时才需要网络。"}},{"@type":"Question","name":"如何把文件导入应用？","acceptedAnswer":{"@type":"Answer","text":"通过“文件”应用、AirDrop、iCloud 云盘或其他应用的共享菜单。"}},{"@type":"Question","name":"JavaScript 真的能运行吗？","acceptedAnswer":{"@type":"Answer","text":"可以。从简单的计数器到完整的游戏与原型，脚本都在阅读器中执行。"}},{"@type":"Question","name":"Sitecase Pro 包含什么？","acceptedAnswer":{"@type":"Answer","text":"Sitecase 免费使用。可选的应用内购买增加了打开整个网站文件夹、带高亮的源码查看、文本搜索、收藏、固定缩放级别，以及对 JavaScript 与网络访问的控制。"}},{"@type":"Question","name":"我的数据会被上传吗？","acceptedAnswer":{"@type":"Answer","text":"不会。没有服务器、没有账号、没有分析。一切都留在设备上。"}}]}]}</script>
+<script>(function(){var b=document.getElementById('lang-btn'),m=document.getElementById('lang-menu');if(!b||!m)return;document.addEventListener('click',function(e){if(e.target.closest('#lang-btn')){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');return}m.classList.remove('open');b.setAttribute('aria-expanded','false')})})();</script>
+
+
+
+</body></html>
