@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#F4F4F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://sitecase.io/ja/"><link rel="alternate" hreflang="x-default" href="https://sitecase.io/"><link rel="alternate" hreflang="zh-Hans" href="https://sitecase.io/zh/"><link rel="alternate" hreflang="ja" href="https://sitecase.io/ja/"><link rel="alternate" hreflang="it" href="https://sitecase.io/it/"><link rel="alternate" hreflang="es" href="https://sitecase.io/es/"><link rel="alternate" hreflang="fr" href="https://sitecase.io/fr/"><link rel="alternate" hreflang="en" href="https://sitecase.io/en/"><link rel="alternate" hreflang="de" href="https://sitecase.io/">
+<link rel="canonical" href="https://sitecase.io/ja/"><link rel="alternate" hreflang="x-default" href="https://sitecase.io/"><link rel="alternate" hreflang="pl" href="https://sitecase.io/pl/"><link rel="alternate" hreflang="ru" href="https://sitecase.io/ru/"><link rel="alternate" hreflang="tr" href="https://sitecase.io/tr/"><link rel="alternate" hreflang="nl" href="https://sitecase.io/nl/"><link rel="alternate" hreflang="pt-BR" href="https://sitecase.io/pt-br/"><link rel="alternate" hreflang="ko" href="https://sitecase.io/ko/"><link rel="alternate" hreflang="zh-Hant" href="https://sitecase.io/zh-hant/"><link rel="alternate" hreflang="zh-Hans" href="https://sitecase.io/zh/"><link rel="alternate" hreflang="ja" href="https://sitecase.io/ja/"><link rel="alternate" hreflang="it" href="https://sitecase.io/it/"><link rel="alternate" hreflang="es" href="https://sitecase.io/es/"><link rel="alternate" hreflang="fr" href="https://sitecase.io/fr/"><link rel="alternate" hreflang="en" href="https://sitecase.io/en/"><link rel="alternate" hreflang="de" href="https://sitecase.io/">
 <meta property="og:url" content="https://sitecase.io/ja/"><meta property="og:type" content="website">
 <meta property="og:site_name" content="Sitecase">
 <meta property="og:title" content="Sitecase — HTMLファイルをローカルで表示">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://sitecase.io/assets/og-image-ja.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+JP:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+JP:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%23F4F4F2'/%3E%3Cpath d='M432 304a80 80 0 0 1 160 0v48h-40v-48a40 40 0 0 0-80 0v48h-40z' fill='%23111'/%3E%3Crect x='208' y='360' width='608' height='408' rx='40' fill='%23111'/%3E%3Cg transform='translate(512 560)' fill='none' stroke='%23F4F4F2' stroke-width='28' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='-96,-64 -156,0 -96,64'/%3E%3Cline x1='-40' y1='72' x2='40' y2='-72'/%3E%3Cpolyline points='96,-64 156,0 96,64'/%3E%3C/g%3E%3C/svg%3E">
 <style>
 :root{--blue:#3474DD;--blue-deep:#2358B4;--ink:#0B0D12;--ink-2:#3A414F;--ink-3:#6B7280;--bg:#FFFFFF;--bg-2:#F4F6F9;--bg-3:#EEF0F3;--line:rgba(11,13,18,.09);--radius:20px}
@@ -31,6 +31,8 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
 html[lang="ja"] body{font-family:'Instrument Sans','Noto Sans JP',-apple-system,sans-serif}
 html[lang="zh-Hans"] body{font-family:'Instrument Sans','Noto Sans SC',-apple-system,sans-serif}
+html[lang="zh-Hant"] body{font-family:'Instrument Sans','Noto Sans TC',-apple-system,sans-serif}
+html[lang="ko"] body{font-family:'Instrument Sans','Noto Sans KR',-apple-system,sans-serif;word-break:keep-all}
 a{color:var(--blue);text-decoration:none}
 a:hover{color:var(--blue-deep)}
 img{display:block;max-width:100%}
@@ -58,6 +60,7 @@ img{display:block;max-width:100%}
 .lang-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:172px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -12px rgba(11,13,18,.22);padding:6px;display:none;flex-direction:column;gap:2px;z-index:60}
 .lang-menu.open{display:flex}
+.lang-menu{max-height:calc(100vh - 88px);overflow-y:auto;overscroll-behavior:contain}
 .lang-menu button,.lang-menu a{display:block;background:transparent;border:none;text-align:left;font:inherit;font-size:14.5px;color:var(--ink-2);padding:9px 11px;border-radius:9px;cursor:pointer;text-decoration:none}
 .lang-menu button:hover,.lang-menu a:hover{background:var(--bg-2);color:var(--ink)}
 .lang-menu button[aria-current="true"],.lang-menu a[aria-current="true"]{color:var(--blue);font-weight:600}
@@ -154,7 +157,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
     </div>
     <div class="lang">
       <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"></path></svg><span id="lang-current">日本語</span></button>
-      <div class="lang-menu" id="lang-menu"><a href="../">Deutsch</a><a href="../en/">English</a><a href="../fr/">Français</a><a href="../es/">Español</a><a href="../it/">Italiano</a><a href="../ja/" aria-current="true">日本語</a><a href="../zh/">简体中文</a></div>
+      <div class="lang-menu" id="lang-menu"><a href="../">Deutsch</a><a href="../en/">English</a><a href="../fr/">Français</a><a href="../es/">Español</a><a href="../it/">Italiano</a><a href="../ja/" aria-current="true">日本語</a><a href="../zh/">简体中文</a><a href="../zh-hant/">繁體中文</a><a href="../ko/">한국어</a><a href="../pt-br/">Português (BR)</a><a href="../nl/">Nederlands</a><a href="../tr/">Türkçe</a><a href="../ru/">Русский</a><a href="../pl/">Polski</a></div>
     </div>
     <a class="btn blue" href="https://apps.apple.com/app/html-viewer-sitecase/id6762896369" target="_blank" rel="noopener">App Storeで見る</a>
   </div>
@@ -322,7 +325,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
     <div class="hero-cta">
       <a class="badge" href="https://apps.apple.com/app/html-viewer-sitecase/id6762896369" target="_blank" rel="noopener"><img src="../assets/badge-appstore-ja.svg" alt="Download on the App Store"></a>
     </div>
-    <div class="langs" id="lang-chips"><a href="../">Deutsch</a><a href="../en/">English</a><a href="../fr/">Français</a><a href="../es/">Español</a><a href="../it/">Italiano</a><a href="../ja/" aria-current="true">日本語</a><a href="../zh/">简体中文</a></div>
+    <div class="langs" id="lang-chips"><a href="../">Deutsch</a><a href="../en/">English</a><a href="../fr/">Français</a><a href="../es/">Español</a><a href="../it/">Italiano</a><a href="../ja/" aria-current="true">日本語</a><a href="../zh/">简体中文</a><a href="../zh-hant/">繁體中文</a><a href="../ko/">한국어</a><a href="../pt-br/">Português (BR)</a><a href="../nl/">Nederlands</a><a href="../tr/">Türkçe</a><a href="../ru/">Русский</a><a href="../pl/">Polski</a></div>
   </div>
 </section>
 
