@@ -1,0 +1,59 @@
+# Sitecase
+
+> Sitecase is an HTML viewer app for iPhone and iPad. It opens, renders and searches HTML files locally on the device — with JavaScript, CSS and a source view. No server, no account, no tracking. Free to use, with an optional Pro in-app purchase (no subscription).
+
+- App Store: https://apps.apple.com/app/html-viewer-sitecase/id6762896369
+- Website: https://sitecase.io/
+- Platforms: iOS, iPadOS
+- Price: Free; Pro features via optional in-app purchase
+- Works fully offline
+- Languages: English, German, French, Spanish, Italian, Japanese, Simplified Chinese, Traditional Chinese, Korean, Portuguese (Brazil), Dutch, Turkish, Russian, Polish
+
+## Who it is for
+
+Web developers, students, teachers and anyone who wants to view HTML files on iPhone or iPad — from a single file to a multi-page website folder. Common uses: documentation, flashcards and study apps, offline travel plans, prototypes, small JavaScript games.
+
+## Features
+
+- JavaScript runs: HTML, CSS and JavaScript render fully; calculators, games and prototypes run natively
+- Open entire website folders with multiple pages, images, CSS and JavaScript (Pro)
+- Modern CSS: grid, flexbox, animations and web fonts
+- Source view with syntax highlighting (Pro)
+- Full-text search inside the open file (Pro)
+- Dark mode (follows system or fixed)
+- Pinch to zoom
+- Adjustable default zoom level (Pro)
+- Favorites (Pro)
+- Shortcuts & Siri: open saved files directly, also as an icon on the Home Screen
+- Import via the Files app or the share sheet
+- Network access can be turned on or off at any time
+- JavaScript can be turned on or off (Pro)
+- Fully offline, no servers, no uploads, no analytics
+
+## Privacy
+
+All files are opened and rendered locally. The app itself does not connect to any server and uses no analytics or tracking services. If an opened page intentionally loads online content, network access can be turned off at any time. Files stay where the user puts them, protected by the iOS sandbox and encryption.
+
+## FAQ
+
+- Which files can I open? HTML files with their CSS, JavaScript, images and fonts, including whole folders with linked pages.
+- Do I need an internet connection? No. A connection is only needed if a page itself loads external content.
+- Does JavaScript really run? Yes, from simple counters to complete games and prototypes.
+- Is my data transmitted? No.
+
+## Pages
+
+- [English](https://sitecase.io/en/)
+- [Deutsch](https://sitecase.io/)
+- [Français](https://sitecase.io/fr/)
+- [Español](https://sitecase.io/es/)
+- [Italiano](https://sitecase.io/it/)
+- [日本語](https://sitecase.io/ja/)
+- [简体中文](https://sitecase.io/zh/)
+- [繁體中文](https://sitecase.io/zh-hant/)
+- [한국어](https://sitecase.io/ko/)
+- [Português (BR)](https://sitecase.io/pt-br/)
+- [Nederlands](https://sitecase.io/nl/)
+- [Türkçe](https://sitecase.io/tr/)
+- [Русский](https://sitecase.io/ru/)
+- [Polski](https://sitecase.io/pl/)
